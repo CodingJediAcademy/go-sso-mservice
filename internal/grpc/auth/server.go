@@ -104,5 +104,5 @@ func (s *serverAPI) IsAdmin(ctx context.Context, in *ssov1.IsAdminRequest) (*sso
 		return nil, status.Error(codes.Internal, "failed to check admin status")
 	}
 
-	return &ssov1.IsAdminResponse{Admin: isAdmin}, nil
+	return &ssov1.IsAdminResponse{IsAdmin: isAdmin}, nil
 }
