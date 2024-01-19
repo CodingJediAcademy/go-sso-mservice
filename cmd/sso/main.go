@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/app"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/config"
+	"go-sso-mservice/internal/app"
+	"go-sso-mservice/internal/config"
 	"log/slog"
 	"os"
 	"os/signal"

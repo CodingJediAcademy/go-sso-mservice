@@ -3,9 +3,9 @@ package authgrpc
 import (
 	"context"
 	"errors"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/services/auth"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/storage"
 	ssov1 "github.com/CodingJediAcademy/protos/gen/go/sso"
+	"go-sso-mservice/internal/services/auth"
+	"go-sso-mservice/internal/storage"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

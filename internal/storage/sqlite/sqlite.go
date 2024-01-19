@@ -5,9 +5,9 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/domain/models"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/storage"
 	"github.com/mattn/go-sqlite3"
+	"go-sso-mservice/internal/domain/models"
+	"go-sso-mservice/internal/storage"
 )
 
 type Storage struct {

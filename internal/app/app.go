@@ -1,9 +1,9 @@
 package app
 
 import (
-	grpcapp "github.com/CodingJediAcademy/go-sso-mservice/internal/app/grpc"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/services/auth"
-	"github.com/CodingJediAcademy/go-sso-mservice/internal/storage/sqlite"
+	grpcapp "go-sso-mservice/internal/app/grpc"
+	"go-sso-mservice/internal/services/auth"
+	"go-sso-mservice/internal/storage/sqlite"
 	"log/slog"
 	"time"
 )
