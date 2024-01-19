@@ -28,6 +28,10 @@ type Auth interface {
 		email string,
 		password string,
 	) (userID int64, err error)
+	IsAdmin(
+		ctx context.Context,
+		userID int64,
+	) (bool, error)
 }
 
 func Register(gRPCServer *grpc.Server, auth Auth) {
@@ -84,4 +88,21 @@ func (s *serverAPI) Register(
 	}
 
 	return &ssov1.RegisterResponse{UserId: uid}, nil
+}
+
+func (s *serverAPI) IsAdmin(ctx context.Context, in *ssov1.IsAdminRequest) (*ssov1.IsAdminResponse, error) {
+	if in.UserId == 0 {
+		return nil, status.Error(codes.InvalidArgument, "user_id is required")
+	}
+
+	isAdmin, err := s.auth.IsAdmin(ctx, in.GetUserId())
+	if err != nil {
+		if errors.Is(err, storage.ErrUserNotFound) {
+			return nil, status.Error(codes.NotFound, "user not found")
+		}
+
+		return nil, status.Error(codes.Internal, "failed to check admin status")
+	}
+
+	return &ssov1.IsAdminResponse{Admin: isAdmin}, nil
 }

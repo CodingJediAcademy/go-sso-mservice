@@ -3,7 +3,7 @@ module go-sso-mservice
 go 1.21.6
 
 require (
-	github.com/CodingJediAcademy/protos v0.0.0-20240118132316-ff4be8a1eca6
+	github.com/CodingJediAcademy/protos v0.0.1
 	github.com/brianvoe/gofakeit/v6 v6.26.4
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/golang-migrate/migrate/v4 v4.17.0
