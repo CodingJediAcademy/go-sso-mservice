@@ -25,3 +25,4 @@ go run ./cmd/sso --config=./config/local_tests.yaml
 ```bash
 go test ./tests -count=1 -v
 ```
+Параметр -count=1 — стандартный способ запустить тесты с игнорированием кэша, а -v добавить больше подробностей в вывод теста.
