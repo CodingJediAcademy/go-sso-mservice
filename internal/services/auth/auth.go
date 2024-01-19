@@ -7,6 +7,7 @@ import (
 	"github.com/CodingJediAcademy/go-sso-mservice/internal/domain/models"
 	"github.com/CodingJediAcademy/go-sso-mservice/internal/lib/jwt"
 	"github.com/CodingJediAcademy/go-sso-mservice/internal/lib/logger/sl"
+	"github.com/CodingJediAcademy/go-sso-mservice/internal/storage"
 	"golang.org/x/crypto/bcrypt"
 	"log/slog"
 	"time"
