@@ -1,9 +1,12 @@
 package main
 
 import (
+	"github.com/CodingJediAcademy/go-sso-mservice/internal/app"
 	"github.com/CodingJediAcademy/go-sso-mservice/internal/config"
 	"log/slog"
 	"os"
+	"os/signal"
+	"syscall"
 )
 
 const (
@@ -17,9 +20,22 @@ func main() {
 
 	log := setupLogger(cfg.Env)
 
-	// TODO: инициализировать приложение (app)
+	application := app.New(log, cfg.GRPC.Port, cfg.StoragePath, cfg.TokenTTL)
+	go func() {
+		application.GRPCServer.MustRun()
+	}()
 
-	// TODO: запустить gRPC-сервер приложения
+	// Graceful shutdown
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
+
+	// Waiting for SIGINT (pkill -2) or SIGTERM
+	<-stop
+
+	// initiate graceful shutdown
+	application.GRPCServer.Stop()
+	log.Info("Gracefully stopped")
 }
 
 func setupLogger(env string) *slog.Logger {
